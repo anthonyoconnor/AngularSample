@@ -10,6 +10,7 @@ import { ConfigService } from '../config.service';
 
 @Injectable()
 export class LoginService {
+    public isLoggedIn: boolean;
     private serverUrl: string;
 
     constructor(private httpClient: HttpClient, private configService: ConfigService) {
@@ -37,14 +38,15 @@ class LoginModel {
 }
 
 @Injectable()
-export class DevelopmentLoginService {
-    isLoggedIn: boolean;
+export class DevelopmentLoginService extends LoginService {
     public loginUser(userName: string, password: string): Observable<boolean> {
         console.log(userName);
         console.log(password);
         if (userName === 'aoc' && password === '1234') {
+            this.isLoggedIn = true;
             return of(true).pipe(delay(500));
         } else {
+            this.isLoggedIn = false;
             return of(false).pipe(delay(500));
         }
     }
@@ -58,7 +60,7 @@ export function loginServiceFactory(httpClient: HttpClient, configService: Confi
     let service: any;
 
     if (configService.getSettings().inMemoryApi) {
-        service = new DevelopmentLoginService();
+        service = new DevelopmentLoginService(httpClient, configService);
     } else {
         service = new LoginService(httpClient, configService);
     }

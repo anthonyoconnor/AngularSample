@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from "@angular/common/http";
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import { actionServiceProvider } from './login/login.service';
 import { NotFoundComponent } from './not-found.component';
 import { ConfigService } from './config.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from './auth-guard-service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [ConfigService, actionServiceProvider],
+  providers: [ConfigService, actionServiceProvider, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

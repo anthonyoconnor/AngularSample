@@ -9,12 +9,14 @@ import { LoginComponent } from './login/login.component';
 import { actionServiceProvider } from './login/login.service';
 import { NotFoundComponent } from './not-found.component';
 import { ConfigService } from './config.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

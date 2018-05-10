@@ -20,8 +20,7 @@ export class LoginComponent implements OnInit {
     this.loginFailed = false;
     this.loginService.loginUser(this.userName, this.password).subscribe(result => {
       if (result) {
-        //TODO: Decide where to go.
-        console.log("Success logging in.");
+        this.router.navigate(['/dashboard']);
       } else {
         this.loginFailed = true;
       }

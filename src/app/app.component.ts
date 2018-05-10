@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationStart } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `<router-outlet></router-outlet>`,
 })
 export class AppComponent {
-  title = 'app';
+  constructor(router: Router) {
+    router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        console.log("URL           -------             ", event.url);
+      }
+    });
+  }
 }

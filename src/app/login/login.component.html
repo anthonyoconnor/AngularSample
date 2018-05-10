@@ -1,0 +1,15 @@
+<p>
+  Enter crendentials
+</p>
+<div>
+  <label>username:
+    <input [(ngModel)]="userName" placeholder="aoconnor">
+  </label>
+</div>
+<div>
+  <label>password:
+    <input type="password" [(ngModel)]="password" placeholder="***">
+  </label>
+</div>
+<p *ngIf="loginFailed">Incorrect credentials</p>
+<button (click)="submit()">Login</button>
